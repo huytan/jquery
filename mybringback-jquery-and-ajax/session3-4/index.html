@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="../js/jquery-1.7.2.js"></script>
+</head>
+<body>
+<h1>Understanding jQuery Functionality - Events and Triggers</h1>
+
+<!--  nếu đoạn script này để ở đây thì button 1 không ẩn vì tài liệu chạy từ trên xuống nó chưa thấy button 1
+<script type="text/javascript">
+//jQuery("") and $("") are same
+	$("#special").hide();
+</script>
+-->
+
+<!--còn khi sử dụng function thì nó lại ẩn vì, function này được chạy khi đã load hết tài liệu HTML -->
+<script type="text/javascript">
+//Document has been loaded
+$(function  () {
+	$("#special").css("font-size","35px");
+	$("#special").css("color","red");
+
+	$("#special").click(function(){
+		$("button:not(#special)").hide();
+
+		$(this).css("font-size","12px");
+		$(this).css("color","black");
+	});
+});
+	
+</script>
+
+
+<button id="special" class="bold small">Button 1</button>
+<button class="bold small">Button 2</button>
+<button class="bold">Button 3</button>
+
+<button>Button 4</button>
+<button>Button 5</button>
+<button>Button 6</button>
+
+
+
+</body>
+</html>

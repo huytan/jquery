@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<style>
+img{
+	width:200px;
+	height:180px;
+}
+
+</style>
+<script src='../jquery.js'>
+</script>
+<script>
+
+$(function(){
+var img1 = new Image();
+img1.src = '2.jpg';
+var img2 = new Image();
+img2.src = '1.jpg';
+var img3 = new Image();
+img3.src = '3.jpg';
+var img4 = new Image();
+img4.src = '4.jpg';
+
+//$('p').before(img1);
+$(img1).insertBefore('p');
+//$('p').after(img2);
+$(img2).insertAfter('p');
+//$('p').prepend(img3);
+$(img3).prependTo('p');
+//$('p').append(img4);
+$(img4).appendTo('p')
+
+});
+
+</script>
+</head>
+<body>
+<h2>This is some title</h2>
+<p>
+There are images before this paragraph, after this paragraph, prepended to this paragraph and appended to this paragraph.
+</p>
+</body>
+</html>
+

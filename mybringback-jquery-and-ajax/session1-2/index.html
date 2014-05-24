@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="../js/jquery-1.7.2.js"></script>
+</head>
+<body>
+<h1>Introduction and Selector</h1>
+<style type="text/css">
+	.big{
+		font-size: 20px;
+	}
+	.small{
+		font-size: 10px;
+	}
+	#green{ 
+		color: green;
+	}
+</style>
+
+<button class="big">Button 1</button>
+
+<button id="green" class="big">Button 1.1</button>
+
+<button class="big">Button 1.2</button>
+
+<button class="small">Button 2</button>
+
+
+<script type="text/javascript">
+//jQuery("") and $("") are same
+	$("#green").hide();
+</script>
+</body>
+</html>

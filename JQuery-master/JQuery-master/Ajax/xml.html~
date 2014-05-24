@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<style>
+#content{
+float:left;
+width:300px;
+}
+#right_content{
+float:right;
+width:300px;
+}
+#middle{
+float:left;
+width:500px;
+margin-left:100px;
+
+}
+body{
+color:#301900;
+
+}
+a{
+color:#3F0B00;
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+
+}
+.contents{
+border-bottom: 1px dotted #f00;
+margin:10px 0 10px 0;
+
+}
+
+</style>
+<script src="http://google.com/jsapi"></script>
+<script>google.load('jquery','1.7.1') </script>
+<script>
+$('document').ready(function(){
+	$.get("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topsongs/limit=100/xml",function(data){
+		$(data).find('entry').each(function(){
+			var entry = $(this);
+			var content = entry.find('content');
+			contents = $('<div class="contents">'+content.text()+'</div>');
+			contents.css('display','none');
+			$('#content').append(contents);
+			contents.slideDown(2000);
+		});
+		$('#content').prepend('<h3>Top Songs</h3>');
+	});
+	$.get("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topMovies/xml",function(data){
+		$(data).find('entry').each(function(){
+			var entry = $(this);
+			var content = entry.find('content');
+			contents = $('<div class="contents">'+content.text()+'</div>');
+			contents.css('display','none');
+			$('#right_content').append(contents);
+			contents.slideDown(2000);
+		});
+		$('#right_content').prepend('<h3>Top Movies</h3>');
+
+	});
+$.get("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=100/xml",function(data){
+		$(data).find('entry').each(function(){
+			var entry = $(this);
+			var content = entry.find('content');
+			contents = $('<div class="contents">'+content.text()+'</div>');
+			contents.css('display','none');
+			$('#middle').append(contents);
+			contents.slideDown(2000);
+		});
+		$('#middle').prepend('<h3>Top Applications</h3>');
+
+	});
+
+
+
+});
+
+</script>
+</head>
+<body>
+<div id="content">
+
+</div>
+<div id="middle">
+
+</div>
+<div id="middle-right">
+</div>
+<div id="right_content">
+
+</div>
+</body>
+</html>

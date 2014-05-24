@@ -1,0 +1,133 @@
+<html>
+<head></head>
+<body>
+	<p>Trong những năm gần đây, người ta hay đánh giá một trang web dựa vào công nghệ mà trang đó đang ứng dụng. Một trong những công nghệ trở nên rất đình đám trong thời gian gần đây là ứng dụng web được gọi là AJAX. Nó là tổng hợp của nhiều công nghệ khác nhau.</p>
+
+	<p>AJAX là chữ viết tắt của Asynchronous JavaScript and XML. Những công nghệ có trong một giải pháp AJAX bao gồm</p>
+
+	<p>
+	<ul>
+		<li>JavaScript dùng để tương tác với người dùng hoặc các sự kiện liên quan đến trình duyệt.</li>
+		<li>Đối tượng XMLHttpRequest, cho phép những câu lệnh truy vấn được gửi đến server mà không làm gián đoạn những tác vụ khác của trình duyệt</li>
+		<li>XML ở trên server, hoặc những định dạng dữ liệu tương tự như HTML và JSON</li>
+		<li>Thêm JavaScript, dùng để chuyển đổi dữ liệu từ server và hiển thị nó lên trang web.</li>
+	</ul>
+	</p>
+
+	<p>Công nghệ AJAX được ca tụng như là vị cứu tinh của thế giới web, nó biến những trang web tĩnh thành những ứng dụng có tính tương tác cao. Rất nhiều frameworks được tạo ra để giúp các lập trình viên học cách sử dụng nó, chính bởi sự không nhất quán của trình duyệt trong việc ứng dụng đối tượng XMLHttpRequest, jQuery cũng không phải là ngoại lệ.
+	Chúng ta sẽ xem xem AJAX có thực sự kỳ diệu như người ta hay nói không.</p>
+
+	<h4>Tải dữ liệu khi được yêu cầu</h4>
+
+	<p>Đằng sau ánh hoàng quang, thì AJAX thực sự chỉ là một công cụ dùng để tải dữ liệu từ server về trình duyệt mà không cần phải refresh lại trang web. Những dữ liệu này có nhiều định dạng và chúng ta cũng có nhiều lựa chọn để làm việc với nó khi nó được tải xong.</p>
+
+	<p>Chúng ta sẽ xây dựng một trang web hiển thị những từ mới trong cuốn từ điển, các nhóm từ được gom lại dưới một chữ cái như trong từ điển. Mã HTML để định dạng vùng nội dung của trang sẽ như sau:</p>
+
+	<xmp>
+	<div id="dictionary">
+	</div>
+	</xmp>
+
+	<p>Yep! Chỉ có vậy thôi. Trang web của chúng ta sẽ không có nội dung nào hết. Chúng ta sẽ sử dụng những phương thức AJAX của jQuery để hiển thị thẻ < div> với cuốn từ điển.</p>
+
+	<p>Chúng ta sẽ cần một nơi để kích hoạt quá trình tải dữ liệu, do vậy chúng ta sẽ thêm vào vài đường liên kết để sau này mình có nơi để gán bộ xử lý sự kiện.</p>
+
+	<xmp>
+	<div class="letters"> 
+		<div class="letter" id="letter-a"> 
+		<h3><a href="#">A</a></h3> 
+		</div> 
+		<div class="letter" id="letter-b"> 
+		<h3><a href="#">B</a></h3> 
+		</div> 
+		<div class="letter" id="letter-c"> 
+		<h3><a href="#">C</a></h3> 
+		</div> 
+		<div class="letter" id="letter-d"> 
+		<h3><a href="#">D</a></h3> 
+		</div>
+	</div>
+	</xmp>
+
+	<p>Thêm 1 chút CSS ta có 1 trang như sau:</p>
+	<img src="6_1.png">
+
+	<p>Bây giờ chúng ta tập trung vào phần lấy nội dung cho trang.</p>
+
+	<h4>Gán HTML vào</h4>
+
+	<p>Ứng dụng AJAX thường chỉ là những truy vấn để có được những đoạn mã HTML. Kỹ thuật này đôi khi còn được gọi là AHAH (Asynchronous HTTP and HTML), lại quá đơn giản với jQuery. Trước hết chúng ta cần một đoạn mã HTML để chèn, chúng ta sẽ tạo một file mới đặt tên là a.html. File HTML này sẽ có mã như sau:</p>
+
+	<xmp>
+	<div class="entry"> 
+		<h3 class="term">ABDICATION</h3> 
+		<div class="part">n.</div> 
+		<div class="definition"> 
+		An act whereby a sovereign attests his sense of the high 
+		temperature of the throne. 
+			<div class="quote"> 
+			<div class="quote-line">Poor Isabella's Dead, whose 
+			abdication</div> 
+			<div class="quote-line">Set all tongues wagging in the 
+			Spanish nation.</div> 
+			<div class="quote-line">For that performance 'twere 
+			unfair to scold her:</div> 
+			<div class="quote-line">She wisely left a throne too 
+			hot to hold her.</div> 
+			<div class="quote-line">To History she'll be no royal 
+			riddle &mdash;</div> 
+			<div class="quote-line">Merely a plain parched pea that 
+			jumped the griddle.</div> 
+			<div class="quote-author">G.J.</div> 
+			</div> 
+		</div>
+	</div>
+	<div class="entry"> 
+		<h3 class="term">ABSOLUTE</h3> 
+		<div class="part">adj.</div> 
+		<div class="definition"> 
+		Independent, irresponsible. An absolute monarchy is one 
+		in which the sovereign does as he pleases so long as he 
+		pleases the assassins. Not many absolute monarchies are 
+		left, most of them having been replaced by limited 
+		monarchies, where the sovereign's power for evil (and for 
+		good) is greatly curtailed, and by republics, which are 
+		governed by chance. 
+		</div>
+	</div>
+	</xmp>
+
+	<p>Đây là hình mà chúng ta sẽ có được, tất nhiên nó nhìn hơi “cùi” vì chưa có định dạng gì hết.</p>
+	<img src="6_2.png">
+
+	<p>Bạn cũng nên chú ý là file a.html không phải là một tài liệu HTML thực sự, bởi vì nó không có thể < html >, < head > và < body >. Đây là những thẻ bắt buộc phải có cho một tài liệu HTML. Những file như thế này được gọi là mảnh hoặc đoạn mã, mục đích tồn tại của nó chỉ dùng để chèn vào những tài liệu HTML khác, đây chính là việc chúng ta sẽ làm.</p>
+
+	<xmp>
+	$(document).ready(function() { 
+		$('#letter-a a').click(function() { 
+		$('#dictionary').load('a.html'); 
+		return false; 
+		});
+		});
+	</xmp>
+
+	<p>Phương thức .load() sẽ làm tất cả những việc còn lại cho chúng ta. Chúng ta chỉ cho nó đường dẫn đến đoạn mã cần chèn bằng cách sử dụng những bộ chọn jQuery thông thường, và sau đó đưa URL của tên file mà chúng ta cần tải dưới dạng tham số của phương thức. Bây giờ nếu bạn nhấp chuột vào đường liên kết đầu tiên, tệp tin đó sẽ được tải và đặt vào trong < div id=’dictionary’>. Trình duyệt sẽ xử lý đoạn mã HTML mới ngay khi nó được chèn vào.</p>
+
+	<img src="6_3.png">
+
+	<p>Bạn nhận thấy rằng mã HTML của chúng ta đã tự động có định dạng CSS còn trước đây thì nó không có định dạng gì. Bởi vì ngay sau khi đoạn mã HTML này được chèn vào trang thì nó sẽ chịu ảnh hưởng bởi các luật CSS của trang nó được chèn vào.</p>
+
+	<p>Khi bạn thử nhấn một chữ thì định nghĩa của từ đó sẽ xuất hiện gần như ngay lập tức. Đây chính là điểm nhầm lẫn khi bạn làm việc local. Bạn sẽ không thấy được thời gian phải đợi để truyền tải tài liệu trên mạng. Giả sử chúng ta thêm một thông báo khi định nghĩa của từ đã tải xong</p>
+
+	<xmp>$(document).ready(function() { 
+	$('#letter-a a').click(function() { 
+	$('#dictionary').load('a.html'); 
+	alert('Loaded!'); 
+	return false; 
+	});
+	});</xmp>
+
+	<p>Khi bạn nhìn vào đoạn mã jQuery ở trên bạn có thể nghĩ rằng hộp thông báo chỉ xuất hiện sau khi tài liệu đã được tải xong. Những lệnh của JavaScript là đồng bộ, làm xong với tác vụ này mới đến tác vụ khác theo trật tự nghiêm ngặt.
+	Nhưng nếu đoạn mã này được chạy thử trên host thật thì bảng thông báo xuất hiện và biến mất trước khi quá trình tải hoàn thành, đó chính là do sự chậm trễ của mạng. Điều này xảy ra là vì những cuộc gọi của AJAX là không đồng bộ. Nếu không thì ta phải gọi nó là SJAX, nghe đã không thấy phê rồi.</p>
+</body>
+</html>

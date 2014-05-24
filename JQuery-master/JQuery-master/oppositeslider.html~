@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<style>
+div#container{
+background-color:#FFF992;
+width:300px;
+height:300px;
+position:relative;
+overflow:hidden;
+}
+div#sliding{
+position:absolute;
+background-color:#11FF84;
+width:300px;
+height:100px;
+bottom:0px;
+right:0;
+
+
+}
+</style>
+<script src="jquery.js"></script>
+<script>
+$('document').ready(function(){
+	$('#slider').bind('click',function(){
+		var elem = $(this).next();
+		elem.animate({right:parseInt(elem.css('right'),10) == 0 ? -elem.outerWidth() :0 });
+	})
+
+});
+</script>
+</head>
+<body>
+<div id="container">
+<input type="button" value="slide it" id="slider" />
+<div id="sliding">
+<p>Sliding from bottom</div>
+</div>
+</div>
+</body>
+<!-----------------Mine overflow should be used in such situations where the relatively positioned elemente contains absolute positioned element whose content can sometimes be seen from outside the box ---->
+
+</html>

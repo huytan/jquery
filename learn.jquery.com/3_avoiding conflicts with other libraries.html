@@ -1,0 +1,132 @@
+<html>
+<head></head>
+<body>
+	<p>The jQuery library and virtually all of it plugins are contained within the "jQuery" namespace. As a general rule, global objects are stored inside the jQuery namespace as well, so you shouldn't get a clash between jQuery and any other library (like prototype.js, MooTools, or YUI</p>
+
+	<p>That said, there is one caveat: "by default, jQuery uses $ as a shortcut for jQuery". Thus, if you are using another JavaScript library that uses the "$" variable, you can run into conflicts with jQuery. In other to avoid these conflicts, you need to put jQuery in no-conflict mode immediately after it is loaded onto the page and before you attempt to use jQuery in your page</p>
+
+	<h4>Putting jQuery into no-conflict mode</h4>
+	<p>When you put jQuery into no-conflict mode, you have the option of assigning a new variable name to replace the "$" alias.</p>
+
+	<xmp>
+	//Putting jQuery into no-conlict mode.
+	<script src="prototype.js"></script>
+	<script src="jquery.js"></script>
+	<script type="text/javascript">
+	var $j = jQuery.noConflict();
+	// $j is now an alias to the jQuery function
+	$j(document).ready(function () {
+		$j( "div" ).hide();
+	});
+
+	//The $ variable now has the prototype meaning, which is a shortcut for document.getElementById().mainDiv below is a DOM element, not a jQuery object
+
+	window.onload = function () {
+		var mainDiv = $( "main" );
+	}
+	</script>
+	</xmp>
+
+	<p>In the code above, the "$" will revert back to its meaning in original library. You'll still be able to use the full function name "jQuery" as well as the new alias "$j" in the rest of your application. The new alias can be named any thing you'd like: jq, $J, awesome Query, etc.</p>
+
+	<p>Finally, if you don't want to define another alternative to the full "jQuery" function name ( you really like to use "$" and don't care abliut using the other library's "$" method), then there's still another approach you might try: simply andd the "$" as an argument passed to your jQuery (document).ready() function. This is most frequently used in the case where you still want the benefits of relly concise jQuery code, but don't want to casue conflicts with other libraries
+	</p>
+
+	<xmp>
+	<!-- Another way to put jQuery into no-conflict mode. -->
+	<script src="prototype.js"></script>
+	<script src="jquery.js"></script>
+	<script>
+	jQuery.noConflict();
+
+	jQuery(document).ready(function($){
+		//you can use the locally-scoped $ in here as an alias to jQuery
+		$( "div" ).hide();
+	});
+
+	//The $ variable in the gloal scope has the prototype.js meaning
+	window.onload = function(){
+		var mainDiv = $("main");
+	}
+	</script>
+	</xmp>
+	<p>This is probably the ideal solution for most of your code, considering that there'll be less code that you'll have to change in orther to achieve complete compatibility.</p>
+
+	<h4>Including jQuery before other libreries</h4>
+	<p>The code snippets above rely on jQuery being loaded after prototype.js is loaded. If you include jQuery before other libraries, you may use "jQuery" when you do some work with jQuery, but the "$" will have the meaning defined in the other library. There is no need to relinquish the "$" alias by calling "jQuery.noConflict()"</p>
+
+	<xmp>
+	<!-- Loading jQuery before other libraries. -->
+	<script src="jquery.js"></script>
+	<script src="prototype.js"></script>
+	<script>
+	//Use full js function name to reference jQuery.
+	jQuery(document).ready(function(){
+		jQuery("div").hide();
+	});
+
+	//use the $ variable as defined in prototype.js
+	window.onload = function(){
+		var mainDiv = $("main");
+	};
+	</script>
+	</xmp>
+
+	<h4>Summary of ways to reference the jQuery function</h4>
+
+	<p>Here's a recap of ways you can reference the jQuery function when the presence of another library creates c conflict over the use of the "$" variable:
+	</p>
+	<h5>Create a new Alias</h5>
+	<p>The "jQuery.noConflict()" methods returns a reference to the jQuery Funtion, so you can capture it in whatever variable you'd like:</p>
+	<xmp>
+	<script src="prototype.js"></script>
+	<script src="jquery.js"></script>
+	<script type="text/javascript">
+	//Give $ back to prototype.js; create new alias to jQuery.
+	var $jq = jQuery.noConflict();
+	</script>
+	</xmp>
+	<h5>Use an Immediately Invoked Function Expression</h5>
+
+	<p>You can continue to use the standard "$" by wrapping your code in an immediately invoked function expression; this is also a standard pattern for jQuery plugin authoring, where the author cannot knoew whether another library will have taken over the "$". De the <a href="http://learn.jquery.com/plugins/">Plugins</a> section for more information about writing plugins.</p>
+
+	<xmp>
+	<!-- Using the $ inside an immediately-invoked function expression. -->
+	<script src="prototype.js"></script>
+	<script src="jquery.js"></script>
+	<script>
+	jQuery.noConflict();
+
+	(function($){
+		//Your Jquery code here, using the $
+	})(jQuery);
+	</script>
+	</xmp>
+	<p>Nothe that if you use this technique, you will not be able to use prototype.js methods inside the immediately invoked function that expect "$" to be prototype.js's "$"</p>
+
+	<h5>Use the argument that's passed to the <h6>jQuery(document).ready()</h6> Function</h5>
+
+	<xmp>
+	<script src="jquery.js"></script>
+	<script src="prototype.js"></script>
+	jQuery(document).ready(function( $ ) {
+	    // Your jQuery code here, using $ to refer to jQuery.
+	});
+	</script>
+	</xmp>
+	<p>Or using the more concise syntax for the DOM ready function:</p>
+
+	<xmp>
+	<script src="jquery.js"></script>
+	<script src="prototype.js"></script>
+	<script>
+	 
+	jQuery(function($){
+	    // Your jQuery code here, using the $
+	});
+	 
+	</script>
+	</xmp>
+
+</body>
+</html>

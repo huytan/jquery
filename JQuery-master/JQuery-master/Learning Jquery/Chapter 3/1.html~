@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<style>
+</style>
+<script src='http://google.com/jsapi'></script>
+<script>google.load('jquery','1.7.1')</script>
+<script>
+$(document).ready(function(){
+		$('div.label').click(function(){
+		var paraWidth = $('div.speech p').outerWidth();
+		var switcher = $(this).parent();
+		var switcherWidth = switcher.outerHeight();
+		switcher
+		.fadeTo('fast',0.5)
+		.animate({left:paraWidth-switcherWidth}, {duration:'slow'})
+		.fadeTo('slow',1.0)
+		.slideUp('slow')
+		.slideDown('slow')
+		.animate({height:'+=20px'},'slow')
+		.queue(function(){
+			switcher.css('backgroundColor','rgb('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+')').dequeue();
+		})
+		.animate({borderWidth:'5px'},'slow');
+	var $speech = $('.speech')});
+	
+	$('#switcher button').click(function(){
+		var num = parseFloat($speech.css('fontSize'),10);
+		switch (this.id){
+			case 'switcher-default':
+				num = 14;
+				break;
+			case 'switcher-large':
+				num*=1.4;
+				break;
+			case 'switcher-small':
+				num/=1.4
+				break;
+		}
+		$speech.animate({'fontSize':num+'px'},'fast','swing');
+	});
+	$firstPara = $('.speech p:eq(1)');
+	$firstPara.hide();
+	$('.more').click(function(){
+	//$firstPara.slideToggle('slow');
+	$firstPara.animate({'opacity':'toggle','height':'toggle'},'slow');
+	
+	if( $(this).text()=="read more")
+		$(this).text('read less');
+	else
+		$(this).text('read more');
+	
+	
+	/*
+		if($firstPara.is(':hidden')){
+			$firstPara.fadeIn('slow');
+			$(this).text('Read less');
+		}else{
+			$firstPara.fadeOut('slow');
+			$(this).text = "Read more"
+		}
+	*/
+		return false;
+	
+	});
+
+
+});
+</script>
+</head>
+<body>
+<div id="switcher">
+<div class="label">Text Size</div>
+<button id="switcher-default">Default</button>
+<button id="switcher-large">Bigger</button>
+<button id="switcher-small">Smaller</button>
+</div>
+<div class="speech">
+<p>Fourscore and seven years ago our fathers brought forth
+on this continent a new nation, conceived in liberty,
+and dedicated to the proposition that all men are created
+equal.</p>
+<p>Now we are engaged in a great civil war, testing whether
+that nation, or any nation so conceived and so dedicated,
+can long endure. We are met on a great battlefield of
+that war. We have come to dedicate a portion of that
+field as a final resting-place for those who here gave
+their lives that the nation might live. It is altogether
+fitting and proper that we should do this. But, in a
+larger sense, we cannot dedicate, we cannot consecrate,
+we cannot hallow, this ground.
+</p>
+<a href="#" class="more">read more</a>
+
+</div>
+</body>
+</html>

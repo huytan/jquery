@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://google.com/jsapi"></script>
+<script>
+google.load('jquery','1.7.1');
+</script>
+<style>
+#switcher{
+background-color:#ccc;
+overflow:hidden;
+width:500px;
+padding:10px;
+float:right;
+
+}
+div div{
+float:left;
+padding:20px;
+margin:10px;
+border:1px solid black;
+background-color:#fff;
+}
+#content{
+clear:both;
+
+}
+.selected{
+background-color:#C1FFE3;
+
+}
+.hidden{
+	display:none;
+}
+#switcher .hover{
+	cursor:pointer;
+	background:#afa;
+
+}
+</style>
+<script>
+/*
+$('document').ready(function(){
+
+	$('#switcher h3').toggle(function(){
+	
+			$('#switcher .button').addClass('hidden');
+		}, function(){
+			$('#switcher .button').removeClass('hidden');
+		});
+		
+	
+	$('document').keyup(function(event){
+		console.log('Key');
+		switch (String.fromCharCode(event.keyCode)){
+			case 'D':
+				$('#switcher-default').click();
+				break;
+			case 'N':
+				$('#switcher-narrow').trigger('click');
+				break;
+			case 'L':
+				$('#switcher-large').trigger('click');
+				break;
+		
+		
+		}
+	});
+
+	$('#switcher .button').hover(function(){
+		$(this).addClass('hover')
+	},function(){
+		$(this).removeClass('hover')
+	});
+	$('#switcher').bind('click',function(event){
+		$('#switcher .button').toggleClass('hidden');
+	});
+	$('#switcher .button').click(function(event){
+	
+		$('.button').removeClass('selected');
+		$(this).addClass('selected');
+		if($(this).attr('id')==="switcher-default"){
+					
+		}
+		if($(this).attr('id')==="switcher-narrow")
+			console.log("Switcher-narrow");
+		if($(this).attr('id')==="switcher-large")
+			console.log("Switcher-large");
+		if($(this).attr('id')==="switcher-default")
+			console.log("Switcher-default");
+		event.stopPropagation();
+	
+	});
+	
+	
+	$('#switcher').trigger('click');
+});
+*/
+$(document).ready(function() {
+// Enable hover effect on the style switcher buttons.
+$('#switcher .button').hover(function() {
+$(this).addClass('hover');
+}, function() {
+$(this).removeClass('hover');
+});
+// Allow the style switcher to expand and collapse.
+var toggleStyleSwitcher = function(event) {
+if (!$(event.target).is('.button')) {
+$('#switcher .button').toggleClass('hidden');
+}
+};
+$('#switcher').click(toggleStyleSwitcher);
+$('#switcher').click();
+// The setBodyClass() function changes the page style.
+// The style switcher state is also updated.
+var setBodyClass = function(className) {
+$('body').removeClass();
+$('body').addClass(className);
+$('#switcher .button').removeClass('selected');
+$('#switcher-' + className).addClass('selected');
+if (className == 'default') {
+$('#switcher').click(toggleStyleSwitcher);
+}
+else {
+$('#switcher').unbind('click', toggleStyleSwitcher);
+$('#switcher .button').removeClass('hidden');
+}
+};
+// Invoke setBodyClass() when a button is clicked.
+$('#switcher').click(function(event) {
+if ($(event.target).is('.button')) {
+if (event.target.id == 'switcher-default') {
+setBodyClass('default');
+}
+if (event.target.id == 'switcher-narrow') {
+setBodyClass('narrow');
+}
+else if (event.target.id == 'switcher-large') {
+setBodyClass('large');
+}
+}
+});
+// Invoke setBodyClass() when a key is pressed.
+$(document).keyup(function(event) {
+switch (String.fromCharCode(event.keyCode)) {
+case 'D':
+setBodyClass('default');
+break;
+case 'N':
+setBodyClass('narrow');
+break;
+case 'L':
+setBodyClass('large');
+break;
+}
+});
+});
+
+
+</script>
+</head>
+<body>
+<div id="switcher">
+<h3>Style Switcher</h3>
+<div class="button selected" id="switcher-default">
+Default
+</div>
+<div class="button" id="switcher-narrow">
+Narrow Column
+</div>
+<div class="button" id="switcher-large">
+Large Print
+</div>
+</div>
+
+<div id="content">
+<h2>Update on my Node.js Memory and GC Benchmark</h2>
+<p>
+Posted on 29 September 2010
+I was lucky enough to have a short chat with Ryan at JSConf.eu last weekend in Berlin about the memory allocation comparison between Node.js and RingoJS I had done. He didn’t have any suggestion for tuning Node.js or V8 for higher memory and garbage collector throughput, but thought it was possible that Node’s lackluster performance in the benchmark had to do with binary buffers and getting data in and out of them.
+</p>
+<p>
+Thinking about a memory and garbage collection benchmark that didn’t involve buffers quickly led me to JSON. Parsing JSON is a fairly frequent task for a web application, and it can put a considerable load on the garbage collector. Also, from my work on the Rhino JSON parser I knew that it is comparable in speed to V8’s (something that unfortunately isn’t true of, say, RegExp implementations), so the results would reflect GC performance pretty well.
+</p>
+<p>
+Here’s the source code of the JSON parsing benchmark I wrote. Basically it builds a ~25kb JSON string at startup that is parsed once for each request. The JSON string consists of an object with 100 child objects, each of which contain 10 short string properties.
+</p>
+<p>
+The results I got confirmed those of the other benchmarks, with Node.js scoring 613 requests per second and RingoJS 1123 (this result was updated from the original post, see notes below). This is even more noteworthy as it builds on a Hello-World HTTP benchmark where Node clearly outperforms Ringo! Here’s the graph showing the distribution of response times across all 50,000 requests made:
+</p>
+
+</div>
+</body>
+</html>

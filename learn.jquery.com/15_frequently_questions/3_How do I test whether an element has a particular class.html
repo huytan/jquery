@@ -1,0 +1,35 @@
+<html>
+<head></head>
+<body>
+	<h3>How do I test whether an element has a particular class?</h3>
+	<p><a href="http://api.jquery.com/hasClass/">.hasClass()</a> handles this common use case:</p>
+
+	<xmp>
+	$( "div" ).click(function(){
+		if( $(this).hasClass("protected")){
+			$(this)
+				.animate({ left: -10})
+				.animate({ left: 10})
+				.animate({ left: -10})
+				.animate({ left: 10})
+				.animate({ left: 0});
+		}
+	});
+	</xmp>
+
+	<p>You can also use the <a href="http://api.jquery.com/is/">.is()</a> method along with an appropriate selector for more advanced matching:</p>
+	<xmp>
+	if ($("#myDiv").is(".pretty.awesome")){
+		$("#myDiv").show();
+	}
+	</xmp>
+
+	<p>Note that this method allwos you to test for other things as well. For example, you can test whether an elemnt is hidden ( be using the custom <a href="http://api.jquery.com/hidden-selector/">:hidden</a> selector) :</p>
+
+	<xmp>
+	if( $("#myDiv").is(:hidden)){
+		$("#myDiv").show();
+	}
+	</xmp>
+</body>
+</html>

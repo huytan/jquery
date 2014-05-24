@@ -1,0 +1,231 @@
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h3>jQuery selectors</h3>
+	<h4>Document Object Model (Mô hình đối tượng tài liệu)</h4>
+	<p>Một trong những tính năng mạnh mẽ nhất của jQuery là khả năng chọn các thành phần trong DOM một cách dễ dàng. Nói nôm na thì DOM là một dạng phả hệ của các thành phần HTML. Các thành phần này có mối tương quan với nhau như một “gia đình” HTML hạnh phúc. Khi chúng ta nói đến các mối quan hệ này bạn hãy liên tưởng đến mối quan hệ trong gia đình như ông bà, bố mẹ, anh chị em v.v.. Bạn có thể xem bài Hướng đối tượng dựa vào cấp bậc XHTML để biết rõ hơn về mối quan hệ của các thành phần HTML.</p>
+
+	<h4>Hàm $()</h4>
+	<p>Cho dù bạn sử dụng Selector nào đi chăng nữa trong jQuery, bạn luôn bắt đầu bằng một dấu dollar ($) và một đôi ngoặc đơn như: $(). Tất cả những gì có thể được sử dụng trong CSS cũng có thể được lồng vào dấu ngoặc kép (”) và đặt vào trong hai dấu ngoặc đơn, cho phép chúng ta áp dụng các phương pháp jQuery cho tập hợp các phần tử phù hợp.</p>
+	<p>Ba thành phần quan trọng nhất của jQuery Selector là tên thẻ HTML, ID và Class. Bạn có thể chỉ sử dụng nó hoặc kết hợp với những Selector khác để chọn. Dưới đây là một ví dụ về mỗi Selecter khi sử dụng một mình.</p>
+
+	<table border="1">
+		<thead>
+			<th>Selector</th>
+			<th>Css</th>
+			<th>Jquery</th>
+			<th>Diễn giải</th>
+		</thead>
+		<tr>
+			<td>Thẻ HTML</td>
+			<td>P</td>
+			<td>$('p')</td>
+			<td>Chọn tất cả các thẻ p trong tài liệu HTML</td>
+		</tr>
+		<tr>
+			<td>ID</td>
+			<td>#vi-du</td>
+			<td>$('#vi-du')</td>
+			<td>Chỉ chọn thành phần nào có ID là #vi-du</td>
+		</tr>
+		<tr>
+			<td>Class</td>
+			<td>.featured</td>
+			<td>$('.featured')</td>
+			<td>Chọn tất cả các thành phần có class là .featured</td>
+		</tr>
+	</table>
+
+	<p>Như đã nói ở chương 1, khi chúng ta thêm các phương pháp vào hàm $(), thì các phần tử nằm trong đối tượng jQuery sẽ được tự động lopp và diễn ra ở "hậu trường". Cho nên chúng ta không cần phải sử dụng bất cứ 1 vòng lặp nào cả, như vòng lặp for chẳng hạn, điều này thường làm trong khi viết code về DOM. Sau khi bạn đã nắm được những khái niệm cơn bản, bây giờ chúng ta sẽ khám phá thêm những tính năng mạnh mẽ khác của jQuery</p>
+
+	<H4>CSS selector</H4>
+	<p>Thư viện jQuery hỗ trợ gần như toàn bộ các CSS Selector chuẩn từ CSS1 cho đến CSS3. Chính việc này đã cho phép những người làm web không phải lo lắng về liệu trình duyệt có hỗ trợ những Selector mới hay không(đặc biệt là trình duyệt IE) miễn là trình duyệt đó có bật JS</p>
+
+	<p><b>Lưu ý:</b> những người làm web có kinh nghiệm và trách nhiệm luôn nên áp dụng nguyên tắc nâng cao lũy tiến và giáng cấp hài hoài cho code của họ. Họ phải luôn chắc chắc ràng trang web luôn được hiển thị chính xác, cho dù không được đẹp như khi JS bị tắt hoặc khi nó được bật. Chúng ta sẽ bàn thêm về nguyên tắc này trong suốt chiều dài của loạt bài này</p>
+
+	<p>Để tìm hiểu jQuery sử dụng CSS Selector như thế nào thì cách tốt nhất là làm bằng ví dụ. Trong ví dụ dưới đây chúng ta sẽ sử dụng 1 dạng danh sách thường được dùng để làm thanh di chuyển trên web. Code HTML sẽ như sau:</p>
+
+	<xmp>
+	<ul id="nav">
+		<li><a href="#">Home page</a></li>
+		<li><a href="#">About Me</a></li>
+		<li><a href="#">Forum</a></li>
+		<li><a href="#">Ebooks</a>
+		<ul>
+			<li><a href="#">jQuery</a></li>
+			<li><a href="#">Css</a></li>
+			<li><a href="#">HTML</a></li>
+		</ul>
+		</li>
+		<li><a href="http://www.jquery.com">Tutorials</a></li>
+        <li><a href="#">Photoshop</a>
+        <ul>
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Effect</a></li>
+            <li><a href="#">Plugins</a></li>
+        </ul>
+        </li>
+        <li><a href="mailto:email@yahoo.com">Email</a></li>
+	</ul>
+	</xmp>
+	<p>Trong đoạn code HTML ở trên chúng ta đơn giản chỉ có unorder list với id ="nav" đóng vai trò là menu chính. Khi chưa có style gì áp dụng vào nó thì kết quả khi xem ở trình duyệt sẽ như hình dưới đây. Đây chính là định dạng mặc định của tình duyệt cho các Unorder List
+		<img src="jquery-chapter-2.png">
+	</p>
+	<h4>Định dạng list-item</h4>
+	<p>Tất nhiên trong ví dụ này bạn hoàn toàn có thể sử dụng CSS để định dạng menu này, nhưng vì chúng ta muốn khám phá jQuery nên chúng ta tạm thời coi như CSS không tông tại. Giả sử trong ví dụ này bạn muốn những list-item chính có gạch chân mà những ul phụ của nó sẽ không có gạch chân</p>
+
+	<xmp>
+		.highlight{
+		border-bottom: 1px solid #e6db55;
+		padding: 5px;
+		}
+	</xmp>
+
+	<p>Thay vì chúng ta sẽ thêm class trực tiếp vào tài liệu HTML, chúng ta sẽ sử dụng jQuery để thêm class vào những list-item tầng 1 như: Homepage, About Me, Forum, Ebooks, Tutorials, Photoshop và Email</p>
+
+	<xmp>
+	$(document).ready(function(){
+		$('#nav > li').addClass('highlight');
+	});
+	</xmp>
+
+	<p>Như đã bàn ở chương 1, chúng ta bắt đầu đoạn code jQuery với $(document).ready(), nó sẽ chạy nhay khi DOM đã được load. Dòng thử 2 sử dụng Css Child selector (>) để thêm class="highlight" chỉ cho lít item tầng 1. Nói thêm ngôn ngữ của chúng ta thì đoạn code trên có nghĩa như sau: jQuery hãy tìm mỗi 1 list item(li) là con trực tiếp (>) của thành phần có ID là nav(#nav). Với class='highlight' được thêm vào, menu của chúng ta được như sau.
+	<img src="jquery-2.png">
+	</p>
+
+	<p>Để định dạng cho những list item tầng 2 có rất nhiều cách. Những 1 trong những cách chúng ta sẽ sử dụng trong phần này là pseudo-class phủ định. Bằng cách này chúng ta sẽ đi xác định tất cả những itme nào mà không có class='highlight'. chúng ta sẽ viết code như sau:</p>
+
+	<xmp>
+	$(document).ready(function(){
+		$('#nav > li').addClass('highlight');
+		$('#nav li:not(.highlight)').addClass('background');
+	});
+	</xmp>
+
+	<p>Đoạn code trên có nghĩa như sau:
+	<ul>
+		<li>1 - Chọn tát cả những danh sách là con trực tiếp #nav</li>
+		<li>2 - Những danh sách này phải không có class='highlight' (:not(.highlight))</li>
+	</ul>
+	Và chúng ta sẽ được hình dưới tất nhiên bạn phải
+	khai báo class='background' trong file CSS của mình
+	<img src="jquery-3.png">
+	</p>
+
+	<h4>Attrinute Selectors</h4>
+	<p>Attribute Selectors là bộ selector phụ của CSS cũng rất hữu dụng. Nó cho phép chúng ta chọn 1 thành phần nào đó dựa vào đặc tính HTML cảu nó như: thuộc tính Title của link hoặc thuộc tính Alt của image. Ví dụ để chọn tất cả các tấm hình có thuộc tính Alt chúng ta làm như sau:</p>
+	<xmp>
+	$('img[alt]')
+	</xmp>
+
+	<h4>Định dạng cho đương liên kết</h4>
+	<p>Nếu bạn biết sơ qua về Regular Expressions trong ngôn ngữ lập trình PHP thì Attribute Selector trong jQuery chịu ảnh hưởng bởi phương pháp này. Ví dụ dấu (^) dùng để xác định giá trị tại điểm bắt đầu hoặc ($) kết thúc của 1 chuỗi. Nó cũng có thể sử dụng dấu (*) để chỉ 1 giá trị 1 tại 1 vị trí bất kỳ trong 1 chuỗi hoặc sử dụng dấu chấm than(!) để biểu thị 1 giá trị phủ định. Trong phần CSS này chúng ta sẽ định dạnh các đường liên kết như sau:</p>
+
+	<xmp>
+	a {
+	color :#00c;
+	}
+	
+	.email{
+	padding-right: 20px;
+	background : url(images/mail.png) no-repeat right center;
+	
+	.book{
+	padding-right: 20px;
+	background: url(images/pdf.png) no-repeat right center;
+	}
+
+	.hyperlink { 
+	padding-right: 20px;
+	background: url(images/external.png) no-repeat right center; 
+	}
+	}
+	</xmp>
+
+	<p>Sau đó chúng ta thêm 3 class là email, ebook và hyperlink vào những đường liên kết thích hợp bằng cách sử dụng jQuery. Để thêm 1 class vào tất cả những đường liên kết email, chúng ta sẽ tạo 1 selector và nó sẽ tìm tất cả các thành phần anchor(a) với thuộc tính href băt đầu bằng chuỗi mailto như sau:</p>
+	<xmp>
+	$(document).ready(function(){
+		$('a[href^=mailto:]').addClass('email');
+	})
+	</xmp>
+
+	<p>Để thêm 1 class vào tất cả các đường liên kết đến những tệp tin .pdf, chúng ta sử dụng dấu $ thay vì dấu ^  như ở trên. Bởi vì lần này chúng ta chỉ chọn những đường liên kết nào có thuộc tính href kết thúc bằng cụm .pdf</p>
+
+	<xmp>
+	$(document).ready(function(){
+		$('a[href^=mailto:').addClass('mailto');
+		#('a[href$=.pdf').addClass('pdflink');
+	})
+	</xmp>
+	<p>Attribute selector cũng có thể được kết hợp với nhau. Ví dụ chũng ta cũng có thể thêm 1 class hyperlink cho tất cả các đường liên kết với giá trị href bắt đầu từ http và chứa cụm từ hyper trong nó</p>
+	<xmp>
+	$(document).ready(function(){
+		$('a[href^=mailto:]').addClass('mailto');
+		$('a[href$=.pdf').addClass('pdflink');
+		$('a[href^=http][href*=jquery]').addClass('hyperlink');
+	})
+	</xmp>
+	<p>Với 3 class được áp dụng như trên cho các đường liên kết chúng ta sẽ được kết quả như hình dưới. Bạn sẽ thấy cạnh mỗi đường link sẽ có thêm 1 hình icon chỉ người dùng biết 1 cách rất trực quan là đường liên kết đó về cái gì
+	<img src="jquery-4.png">
+	</p>
+	<h4>Selector riêng của jQuery</h4>
+	<p>Dường như còn chưa vừa ý với những CSS Selector, jQuery có 1 hệ thống những Selector của riêng nó. Hầu hết những Selector này đều cho phép chúng ta chọn bất cứ thành phần nào trong tài liệu HTML. CÚ pháp cho những Selector này tường đồng với cú pháp của CSS pseudo-class, nơi mà các selector bắt đầu bằng dấu 2 chấm (:). Ví dụ, để chọn thể div thứ 2 của tập hợp những thẻ div có class='horizontal', chúng ta có cách viết code như sau:</p>
+
+	<xmp>
+	$('div.horizontal:eq(2)');
+	</xmp>
+
+	<p>Bạn nên lưu ý pử phần này là :eq(1) chọn thẻ div thứ 2 từ tập hợp trả về bởi vì JS đánh số array bắt đầu từ số 0. Ngược lại, CSS lại là bắt đầu từ số 1. Cho nên khi bnja sử dụng nth-child CSS Selector như là $('div:nth-child(1)') sẽ chọn tất cả các thẻ div là con đầu tiên của thành phần cha mẹ. Tất nhiên đấy là diễn giả là vậy, những nếu trong thực tế thì  bạn nên sử dụng $('div:first-child') thì hợp lý hơn.</p>
+
+	<h4>Định dạnh bảng kiểu kẻ sọc</h4>
+
+	<p>Hai trong số những jQuery selector rất hữu dụng là :ood và :even. Trong ví dụ dưới đây chũng ta sẽ sử dụng 1 trong 2 selecotr này để dịnh dạng cho bnagr kiểu kẻ sọc với code HTML như sau:</p>
+
+	<xmp>
+	<table>
+		<tr>
+			<td>Movies</td>
+			<td>Actors / Actresses</td>
+			<td>Year Make</td>
+		</tr>
+		<tr>
+            <td>Terminator</td>
+            <td>arnold schwarzenegger</td>
+            <td>1991</td>
+        </tr>
+        <tr>
+            <td>Die Hard</td>
+            <td>Bruce Willis</td>
+            <td>2000</td>
+        </tr>
+        <tr>
+            <td>Speed</td>
+            <td>Sandra Bullock</td>
+            <td>1997</td>
+        </tr>
+        <tr>
+            <td>Independence Day</td>
+            <td>Will Smith</td>
+            <td>1999</td>
+        </tr>
+        <tr>
+            <td>Armageddon</td>
+            <td>Bruce Willis</td>
+            <td>1997</td>
+        </tr>
+        <tr>
+            <td>Under Siege</td>
+            <td>Steven Seagal</td>
+            <td>1996</td>
+        </tr>
+        <tr>
+            <td>Avatar</td>
+            <td>Unknown</td>
+            <td>2010</td>
+        </tr>
+	</table>
+	</xmp>
+</body>
+</html>

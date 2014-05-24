@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<script>
+window.onload = function(){
+var wb = new WebSocket("ws://echo.websocket.org");
+wb.onopen = function(evt){
+alert("Connection opened");
+wb.send("Hello programmers!");};
+wb.onmessage = function(evt){alert("Received message"+evt.data)
+wb.close();
+};
+
+wb.onclose=function(){ alert("Connection Closed") };
+};
+</script>
+</head>
+<body>
+
+
+</body>
+</html>
+

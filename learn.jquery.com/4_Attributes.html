@@ -1,0 +1,26 @@
+<html>
+<head></head>
+<body>
+	<h3>Attributes</h3>
+	<p>An element's attributes can contain useful information for your application, so it's important to be able to get and set them</p>
+
+	<h4> The .attr() method</h4>
+	<p>The ".attr()" method acts as both a getter and a setter. As a setter ".attr()" can accept either a key and a value, or an object containing one or more key/value pairs.</p>
+
+	".attr()" as a setter:
+
+	<xmp>
+	$( "a" ).attr("href", "allMyHrefAreTheSameNow.html");
+	$( "a" ).attr({
+		title: "all titles are the same too!",
+		href: "somethingNew.html"
+	});
+	</xmp>
+
+	<p>".attr()" as a getter:</p>
+
+	<xmp>
+	$( "a" ).attr( "href" ); //returns the href for the first a element in the document
+	</xmp>
+</body>
+</html>

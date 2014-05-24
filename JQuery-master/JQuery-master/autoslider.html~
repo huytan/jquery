@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<style>
+#mainbox{
+	position:relative;
+	width:500px;
+	height:500px;
+	background-color:#ccc;
+	overflow:hidden;
+}
+#slidingbox{
+	position:absolute;
+	width:100%;
+	height:100px;
+	background-color:#f00;
+	bottom:0px;
+	left:0;
+}
+</style>
+<script type="text/javascript" src="../JQuery/jquery.js"></script>
+<script>
+	$('document').ready(function(){
+		setInterval(function(){
+			$('#slidingbox').animate({
+				left: parseInt($('#slidingbox').css('left'),0)==0 ? -$('#slidingbox').outerWidth() :0
+			
+			});
+		
+			
+			$('#slidingbox').animate({
+				left: parseInt($('#slidingbox').css('left'),0)==0 ?$('#slidingbox').outerWidth() :0
+			
+			});
+		},400)});
+</script>
+</head>
+<body>
+<div id="mainbox">
+<input type="button" id="slideL" value="slide left"/><input type="button" value="slide right" id="slideR">
+<div id="slidingbox">
+
+</div>
+</div>
+</body>
+</html>

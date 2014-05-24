@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX Overview</title>
+		<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+</head>
+<body>
+<!-- load image with jQuery
+<button>GO jQuery</button>
+<br>
+
+<img id="container" alt="image" src=""/>
+
+<script type="text/javascript">
+	$("button").click(function(){
+		
+		$("#container").attr("src","image.jpg")
+	});
+</script> end jQuery --> 
+
+<button>GO AJAX GO</button>
+<br>
+
+<div id="container"></div>
+<script type="text/javascript">
+	$("button").click(function(){
+		$.get("sample.html",function(data){
+			$("#container").html(data);
+		});
+		
+	});
+</script>
+</body>
+</html>

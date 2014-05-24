@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<style>
+#box{
+position:relative;
+width:100px;
+height:100px;
+background-color:#8FFF67;
+}
+
+</style>
+<script src="http://google.com/jsapi"></script><script>google.load('jquery','1.7.1');</script>
+<script>
+$('document').ready(function(){
+	$('#button1').bind('click',function(){
+		$('#box').animate({
+		left:'+=400px'
+		},{
+		duration:4000,
+		easing:'swing',
+		complete:function(){
+			console.log('Completed');	
+		}	
+		})
+	});
+	
+	$('#button2').bind('click',function(){
+		$('#box').animate({
+			height:'+=40',
+		},{
+			easing:'swing',
+			duration:'fast',
+			queue:false
+		});
+
+	});
+	$('#button2').bind('mouseenter',function(){
+		console.log('mouseover');
+	});
+
+});
+</script>
+</head>
+<body>
+<div id="box">
+
+</div>
+<input type="button" id="button1" value="Left" />
+<input type="button" id="button2" value="Height" />
+</body>
+</html>

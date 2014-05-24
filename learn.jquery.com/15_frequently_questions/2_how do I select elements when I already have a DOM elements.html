@@ -1,0 +1,22 @@
+<html>
+<head></head>
+<body>
+	<h3>How do I select elements when I already have a DOM element?</h3>
+	<p>If you have variable containing a DOM element, and want to select elements related to that DOM element, simply wrap it in a jQuery object.</p>
+
+	<xmp>
+	var myDomElement = document.getElementById("foo"); // A plain DOM element
+	$(myDomElement).find("a"); // Finds all anchors inside the DOM element.
+	</xmp>
+
+	<p>Many people trye to concatnate DOM element or jQuery object with a CSS selector, like so:</p>
+
+	<xmp>
+	$( myDomElement + ".bar"); // This is equivalent to $( "[object HTMLElement].bar" );
+	</xmp>
+	<p>Unfortunately, you canot concatenate strings to objects.</p>
+
+	<h4>Related Articles</h4>
+	<ul><li><a href="http://learn.jquery.com/using-jquery-core/jquery-object/">The jQuery object</a></li></ul>
+</body>
+</html>

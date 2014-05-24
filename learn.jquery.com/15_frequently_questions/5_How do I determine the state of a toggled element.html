@@ -1,0 +1,18 @@
+<html>
+<head></head>
+<body>
+	<h3>How do I determine the state of a toggled element?</h3>
+	<p>You can determine whether an elemnt is collapsed or not by using the ":visible" and ":hidden" selectors.</p>
+	<xmp>
+	var isVisible = $("#myDiv").is(":visible");
+	var isHidden = $("#myDiv").is(":hidden");
+	</xmp>
+
+	<p>If you're simply acting on an elemnt based on its visibility, just include ":visible" or ":hidden" in the selector expression. For example:</p>
+	<xmp>
+	$( "#myDiv:visible" ).animate({
+		left: "+=200px"
+	}, "slow");
+	</xmp>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head></head>
+<body>
+	<h3>How do I test whether an element exists?</h3>
+
+	<p>Use the <a href="http://api.jquery.com/length/">.length</a> property of the jQuery coleection returned by your selector:</p>
+	<xmp>
+	if($("#myDiv").length){
+		$("#myDiv").show();
+	}
+	</xmp>
+
+	<p>Note that it isn't always necessary to test whether an elemnt exists. The following code will show the element if it exists, and do nothing( with no errors) if it does not:</p>
+
+	<xmp>
+	$("#myDiv").show();
+	</xmp>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<style>
+div#container{
+background-color:#FFF992;
+width:300px;
+height:300px;
+position:relative;
+}
+div#sliding{
+position:absolute;
+background-color:#11FF84;
+width:300px;
+height:100px;
+bottom:0px;
+
+}
+</style>
+<script src="jquery.js"></script>
+<script>
+$('document').ready(function(){
+	$('#slider').bind('click',function(){
+		$('#sliding').slideToggle();
+	})
+
+});
+</script>
+</head>
+<body>
+<div id="container">
+<input type="button" value="slide it" id="slider" />
+<div id="sliding">
+<p>Sliding from bottom</div>
+</div>
+</div>
+</body>
+</html>

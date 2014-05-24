@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			.letters{
+			float:left;
+			width:100px;
+			height:800px;
+			overflow:hidden;
+			margin-left:20px;
+			margin-top:10px;
+			}
+
+		</style>
+		<script type="text/javascript" src='http://google.com/jsapi'></script>
+		<script>google.load('jquery','1.7.1');</script>
+		<script>
+			$(document).ready(function(){
+				$('#letter-a a').click(function(){
+					$('#dictionary').slideUp('slow',function(){
+			$('#dictionary').load('a.html');
+					$('#dictionary').slideDown('slow');
+
+
+					});
+
+					return false;
+				});
+				$('#letter-b b').click(function(){
+
+					$.getJSON('b.json',function(data){
+						$("#dictionary").slideUp('slow',function(){$.each(data,function(entryIndex, entry){
+							var html = '<div class="entry">';
+							html += '<h3 class="term">'+entry['term']+'</h3>';
+							html += '<div class="part">'+entry['part']+'</div>';
+							html += '<div class="definition">';
+							html += entry['definition'];
+							html += '</div>';
+							html += '</div>';
+							$('#dictionary').append(html);
+						$('#dictionary').slideDown();
+
+
+						});
+
+
+
+						});
+
+					});
+					console.log('after');
+					return false;
+				});
+				$('#letter-c a').click(function(){
+					$.getScript('c.js');
+					return false;
+
+				});
+				$('#letter-d a').click(function(){
+					var $html;
+					$.get('d.xml',function(data){
+						entry = $(data).find('entry');
+						entry.each(function(data){
+							term = $(this).attr('term');
+							$html = '<div class="entry">';
+							$html+= '<h3 class="term">'+term+'</h3>';
+							//$html+ = '<div class="definition">'+$(data).find('definition').text();
+							quote = $(this).find('quote');
+							if(quote.length){
+								$html+="<div class='quote'><h3>"+quote.attr('author')+"</h3>";
+								line = quote.find('line');
+								line.each(function(){
+									$html+='<p>'+$(this).text()+'</p>';
+								});
+								$html+='</div>';
+
+							}
+
+
+						});
+					});
+
+				$('#dictionary').append($html);
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="letters">
+			<div class="letter" id="letter-a">
+				<h3><a href="#">A</a></h3>
+			</div>
+			<div class="letter" id="letter-b">
+				<h3><a href="#">B</a></h3>
+			</div>
+			<div class="letter" id="letter-c">
+				<h3><a href="#">C</a></h3>
+			</div>
+			<div class="letter" id="letter-d">
+				<h3><a href="#">D</a></h3>
+			</div>
+		</div>
+		<div id='dictionary'></div>
+	</body>
+</html>

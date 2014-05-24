@@ -1,0 +1,26 @@
+body{
+background-color: #DDDDAA;
+}
+
+div.button{
+background-color: #BCD2CB;
+text-align: center;
+text-decoration: none;
+cursor: pointer;
+width:80px;
+height: 16px;
+padding:10px;
+outline: none;
+display: inline-block;
+}
+
+.selected{
+font-weight: bold;
+}
+
+body.green .text{
+    color: green;
+}
+body.red .text{
+color:red;
+}

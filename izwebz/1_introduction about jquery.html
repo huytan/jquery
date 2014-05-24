@@ -1,0 +1,132 @@
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h3>Những gì Jquery có thể làm</h3>
+	<p><b>Hướng tới các thành phần trong tài liệu HTML</b>. Jquery cho phép bạn chọn bất cứ thành phần nào của tài liệu để “vọc” một cách dễ dàng như sử dụng CSS</p>
+
+	<p><b>Thay đổi giao diện của một trang web</b>. CSS là công cụ rất mạnh để định dạng một trang web nhưng nó có một nhược điểm là không phải tất cả các trình duyệt đều hiển thị giống nhau. Cho nên jQuery ra đời để lấp chỗ trống này, vì vậy các bạn có thể sử dụng nó để giúp trang web có thể hiển thị tốt trên hầu hết các trình duyệt. Hơn nữa jQuery cũng có thể thay đổi class hoặc những định dạng CSS đã được áp dụng lên bất cứ thành phần nào của tài liệu HTML ngay cả khi trang web đó đã được trình duyệt load thành công. Thay đổi nội dung của tài liệu. Jquery không phải chỉ có thể thay đổi bề ngoài của trang web, nó cũng có thể thay đổi nội dung của chính tài liệu đó chỉ với vài dòng code. Nó có thể thêm hoặc bớt nội dung trên trang, hình ảnh có thể được thêm vào hoặc đổi sang hình khác, danh sách có thể được sắp xếp lại hoặc thậm chí cả cấu trúc HTML của một trang web cũng có thể được viết lại và mở rộng. Tất cả những điều này bạn hoàn toàn có thể làm được nhờ sự giúp đỡ của API (Application Programming Interface = Giao diện lập trình ứng dụng)</p>
+
+	<p><b>Tương tác với người dùng</b>. Cho dù công cụ bạn dùng có mạnh mẽ đến mấy, nhưng nếu bạn không có quyền quyết định khi nào nó được sử dụng thì công cụ đó cũng coi như bỏ. Với thư viện javaScript như jQuery, nó cho bạn nhiều cách để tương tác với người dùng ví dụ như khi người dùng nhấp chuột vào đường link thì sẽ có gì xảy ra. Nhưng cái hay của nó là không làm cho code HTML của bạn rối tung lên chính là nhờ các Event Handlers. Hơn nữa Event Handler API sẽ bảo đảm rằng trang web của bạn tương thích hầu hết với các trình duyệt, điều này đã và đang làm đau đầu rất nhiều các web designer.</p>
+	<p><b>Tạo hiệu ứng động cho những thay đổi của tài liệu</b>. Để tương tác tốt với người dùng, các web designer phải cho người dùng thấy được hiệu ứng gì sẽ xảy ra khi họ làm một tác vụ nào đó. Jquery cho phép bạn sử dụng rất nhiều hiệu ứng động như mờ dần, chạy dọc chạy ngang v.v.. và nếu vẫn chưa đủ, nó còn cho phép bạn tự tạo ra các hiệu ứng của riêng mình.</p>
+	<p><b>Lấy thông tin từ server mà không cần tải lại trang web</b>. Đây chính là công nghệ ngày càng trở nên phổ biến Asynchronous JavaScript And XML (AJAX), nó giúp người thiết kế web tạo ra những trang web tương tác cực tốt và nhiều tính năng. Thư viện jQuery loại bỏ sự phức tạp của trình duyệt trong quá trình này và cho phép người phát triển web có thể tập trung vào các tính năng đầu cuối. Đơn giản hoá các tác vụ javaScript. Ngoài những tính năng như đã nêu ở trên, jQuery còn cho phép bạn viết code javaScript đơn giản hơn nhiều so với cách truyền thống như là các vòng lặp và điều khiển mảng.</p>
+
+	<h4>Tại sao jQuery làm việc tốt</h4>
+
+	<p>Người dùng ngày càng quan tâm hơn đến Dynamic HTML, đó cũng là nền móng cho sự ra đời của những javaScript Frameworks. Có frameworks thì chỉ tập trung vào một vài tính năng vừa nêu ở trên, có cái thì ráng bao gồm tất cả những hiệu ứng, tập tính và nhồi nhét vào một package. Để đảm bảo là một thư viện “nhanh gọn nhẹ” nhưng vẫn “ngon bổ rẻ” với các tính năng đã nêu ở trên, jQuery sử dụng những chiến lược sau:</p>
+
+	<p><b>Tận dụng kiến thức về CSS</b>. Các jQuery Selector hoạt động y chang như CSS Selector với cùng cấu trúc và cú pháp. Chính vì thế thư viện jQuery là cửa ngõ cho các web designer muốn thêm nhiều tính năng hơn nữa cho trang web của mình. Bởi vì điều kiện tiên quyết để trở thành một web designer chuyên nghiệp là khả năng sử dụng CSS thuần thục. Với kiến thức có sẵn về CSS, bạn sẽ có sự khởi đầu thuận lợi với jQuery.</p>
+
+	<p><b>Hỗ trợ Plugin</b>. Để tránh bị rơi vào trạng thái quá tải tính năng, jQuery cho phép người dùng tạo và sử dụng Plugin nếu cần. Cách tạo một plugin mới cũng khá đơn giản và được hướng dẫn cụ thể, chính vì thế cộng đồng sử dụng jQuery đã tạo ra một loạt những plugin đầy tính sáng tạo và hữu dụng.</p>
+
+	<p><b>Xoá nhoà sự khác biệt giữa trình duyệt</b>. Một thức tế tồn tại là mỗi một hệ thống trình duyệt lại có một kiểu riêng để đọc trang web. Dẫn đến một điều làm đau đầu các web designer là làm thế nào để cho trang web có thể hiển thị tốt trên mọi trình duyệt. Cho nên đôi khi người ta phải làm hẳn một phần code phức tạp để đảm bảo rằng trang web của họ được hiển thị gần như tương đồng ở các trình duyệt phổ biến. Jquery giúp bạn thêm một lớp bảo vệ cho sự khác biệt của trình duyệt và giúp quá trình này diễn ra dễ dàng hơn rất nhiều.</p>
+
+	<p><b>Luôn làm việc với Set</b>. Ví dụ khi chúng ta yêu cầu jQuery tìm tất cả các thành phần có class là delete và ẩn chúng đi. Chúng ta không cần phải loop qua từng thành phần được trả về. Thay vào đó, những phương pháp như là hide() được thiết kế ra để làm việc với set thay vì từng thành phần đơn lẻ. Kỹ thuật này được gọi là vòng lặp ẩn, điều đó có nghĩa là chúng ta không phải tự viết code để loop nữa mà nó vẫn được thực thi, chính vì thế code của chúng ta sẽ ngăn hơn rất nhiều.</p>
+
+	<p><b>Cho phép nhiều tác vụ diễn ra trên cùng một dòng</b>. Để tránh phải sử dụng những biến tạm hoặc các tác vụ lặp tốn thời gian, jQuery cho phép bạn sử dụng kiểu lập trình được gọi là Chaining cho hầu hết các method của nó. Điều đó có nghĩa là kết quả của các tác vụ được tiến hành trên một thành phần chính là thành phần đó, nó sẵn sàng cho tác vụ tiếp theo được áp dụng lên nó. Những chiến lược được nêu ở trên giúp kích thước của jQuery rất nhỏ bé chỉ khoảng trên dưới 20Kb dạng nén. Nhưng vẫn đảm bảo cung cấp cho chúng ta những kỹ thuật để giúp code trên trang nhỏ gọn và mạch lạc.</p>
+	<p>Jquery sở dĩ trở nên phổ biến là do cách sử dụng đơn giản và bên cạnh đó còn có một cộng đồng sử dụng mạnh mẽ vẫn ngày ngày phát triển thêm Plugin và hoàn thiện những tính năng trọng tâm của jQuery. Cho dù thực tế là vậy, nhưng jQuery lại là thư viện javaScript hoàn toàn miễn phí cho mọi người sử dụng. Tất nhiên nó được bảo vệ bởi luật GNU Public License và MIT License, nhưng bạn cứ yên tâm là bạn có thể sử dụng nó trong hầu hết các trường hợp kể cả thương mại lẫn cá nhân.</p>
+
+	<h4>Tạo trang web đầu tiên với sự hỗ trợ của jQuery
+	<p>Có hai cách để chèn jQuery vào một trang web.</p>
+	<h5>1. Tự host jQuery</h5>
+	<p>Vào trang chủ của jQuery và download phiên bản mới nhất. Thường thì có 2 phiên bản của jQuery cho bạn download. Phiên bản chưa nén dành cho những người phát triển và đang học như bạn. Còn phiên bản nén kia dành cho phần sử dụng trực tiếp trên trang vì nó có dung lượng nhỏ hơn rất nhiều so với phiên bản chưa nén. Bạn không cần phải cài đặt jQuery, bạn chỉ cần đặt đường link tới thư viện đó là được. Bất cứ khi nào bạn cần sử dụng jQuery, bạn chỉ cần gọi nó trong tài liệu HTML đến nơi lưu trữ nó trên host của bạn.</p>
+
+	<h5>2. Dùng phiên bản có sẵn trên server của Google</h5>
+	<p>Ngoài cách trên ra bạn cũng có thể sử dụng phiên bản nén của jQuery có sẵn trên server của Google. Sử dụng cách này có 2 điều lợi là a) tiết kiệm băng thông cho trang web của bạn và b) jQuery sẽ được load nhanh hơn nếu máy của người dùng đã cache jQuery.</p>
+
+	<xmp>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+	</xmp>
+
+	<h5>Chuẩn bị tài liệu HTML</h5>
+
+	<xmp>
+	<<!DOCTYPE html>
+	<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Introduction</title>
+	<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+	<script src=”first-jquery.js” type=”text/javascript”></script>
+
+	</head>
+	<body>
+	<div id="wrapper">
+		<div id="header">
+			<div id="logo"> Jquery Introduction</div>
+		</div>
+		<div id="mainContent">
+			<div id="sidebar">
+				<ul id="nav">
+					<li><a href="#">Home Page</a></li>
+                    <li><a href="#">About Me</a></li>
+                    <li><a href="#">Forum</a></li>
+                    <li><a href="ebook.pdf">Ebooks</a></li>
+                    <li><a href="http://www.jquery.com">Tutorials</a></li>
+                    <li><a href="#">Photoshop</a></li>
+                    <li><a href="mailto:email@yahoo.com">Email</a></li> 
+				</ul>
+			</div> <!-- end #sidebar-->
+			<div id="primary">
+				<h3>Lorem ipsum dolor sit amet</h3>
+                <p class="text">
+                some text here
+                </p>
+                <div>
+                 <h3>Lorem ipsum dolor sit amet</h3>
+                 <p>
+                   some text here
+                </p>
+                </div>
+                <h3>Lorem ipsum dolor sit amet</h3>
+                 <p class="text">
+                   some text here
+                </p>
+			</div><!--end #primary-->
+		</div><!--end #mainContent-->
+		<div id="footer">
+            <p>&copy;2010 Izwebz - Demon Warlock</p>
+        </div><!--end #footer-->
+	</div><!--end #wrapper-->
+	</body>
+	</html>
+	</xmp>
+
+	<p>Ở đoạn code trên bạn dễ dàng nhận thấy rằng thư viện jQuery được đặt ở dưới Stylesheet. Đây là một điểm rất quan trọng mà bạn cần lưu ý là thứ tự của các file khi gọi. Ban đầu phải là CSS load trước, khi trang web đã load xong phần CSS thì chúng ta mới thêm vào phần thư viện jQuery cuối cùng mới là code jQuery chúng ta tự viết ra. Nếu không khi code jQuery của bạn sẽ không làm việc đúng như mong đợi nếu thư viện jQuery chưa được load.</p>
+
+	<h4>Bắt đầu code jQuery</h4>
+	<p>Bây giờ bạn mở trình soạn thảo code lên và tạo một file tên là first-jquery.js và file này đã được chúng ta chèn vào trong dòng code:</p>
+
+	<xmp>
+	<script src=”first-jquery.js” type=”text/javascript”></script>
+	</xmp>
+
+	<p>Gõ vào file vừa tạo 3 dòng code như sau:</p>
+
+	<xmp>
+	$(document).ready(function() { 
+    $('.text').addClass('important');
+    });
+	</xmp>
+
+	<p>	Thao tác cơ bản nhất của jQuery là chọn một phần nào đó của tài liệu HTML. Bạn tiến hành nó bằng cách sử dụng hàm $(). Thường thì nằm giữa dấu ngoặc () là một chuỗi dưới dạng tham số, nó có thể là những CSS Selectors. Trong ví dụ này chúng ta muốn tìm tất cả những thành phần nào có class=”text”, cú pháp giống như khi bạn viết code CSS vậy. Tất nhiên ở những bài sau chúng ta sẽ tham khảo thêm nhiều những lựa chọn khác hay hơn nữa. Trong chương 2 chúng ta sẽ nghiên cứu một vài cách khác để lựa chọn các thành phần trong tài liệu HTML.
+
+	Hàm $() chính là một jQuery Object, đây là nên móng cho tất cả những gì chúng ta sẽ học từ bây giờ. Jquery Object bao gồm không hoặc nhiều thành phần DOM và cho phép chúng ta tương tác với chúng bằng nhiều cách. Trong trường hợp này chúng ta muốn thay đổi cách hiển thị của những phần này trong trang, chúng ta thực hiện nó bằng cách thay đổi class của nó.
+	</p>
+
+	<h4>Thêm vào một class mới</h4>
+
+	<p>Phương pháp .addClass(), cũng giống như hầu hết các phương pháp jQuery khác, được đặt tên theo chức năng của nó. Khi được gọi, nó sẽ thêm một class vào thành phần chúng ta đã chọn. Tham số duy nhất của nó là tên class sẽ được thêm vào. Phương pháp này và đối ngược với nó là .removeClass(), sẽ cho phép chúng ta quan sát jQuery hoạt động như thế nào khi chúng ta khám phá những phương pháp lựa chọn có sẵn của jQuery. Còn bây giờ, code jQuery của chúng ta chỉ đơn giản thêm một class=”important”, và class này đã được khai báo trong stylesheet với các thuộc tính như viền đỏ và nền hồng nhạt.</p>
+
+	<xmp>
+	 border: 1px solid red;
+	 background: pink;
+	</xmp>
+
+	<p>Bạn cũng nhận thấy rằng chúng ta không phải chạy một vòng lặp nào để thêm class vào các đoạn văn bản có cùng chung class. Đây chính là vòng lặp ẩn của các phương pháp jQuery, như trong ví dụ này là .addClass(), cho nên bạn chỉ phải gọi đúng một lần và chỉ có vậy để thay đổi những thành phần bạn muốn trong tài liệu. Bây giờ nếu bạn chạy thử trang web vừa tạo trên trình duyệt bạn sẽ thấy 2 đoạn văn có cùng class là .text sẽ bị tô hồng và có viền màu đỏ.</p>
+
+	<p>Đến đây chúng ta đã kết thúc phần một của loạt bài về jQuery. Trong bài này bạn đã biết được jQuery có thể làm những gì? Bạn cũng đã học được cách để sử dụng jQuery trên một tài liệ HTML và cuối cùng là dùng thử một phương pháp của jQuery là .addClass().</p>
+</body>
+</html>

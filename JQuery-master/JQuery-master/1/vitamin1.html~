@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<script src="../jquery.js">
+</script>
+<script src="vitamin1.js">
+</script>
+<style type="text/css">
+div{
+	width:200px;
+	height:200px;
+	background-color:#0CBEFD;
+	float:left;
+	margin:50px;
+	color:#fff;
+	font-size:50px;
+	font-weight:800;
+	padding:10px;
+}
+h1{
+	margin-left:20px;
+	
+	
+
+}
+
+</style>
+</head>
+<body>
+<div id='i1'>
+1
+</div>
+
+<div id='i2'>
+2
+</div>
+<div id='i3'>
+3
+</div>
+
+<div id='i4'>
+4
+</div>
+<div id='i5'>
+5
+</div>
+<div id='i6'>
+6
+</div>
+
+<div id='i7'>
+7
+</div>
+<div id='i8'>
+8
+</div>
+
+
+</body>
+</html>
