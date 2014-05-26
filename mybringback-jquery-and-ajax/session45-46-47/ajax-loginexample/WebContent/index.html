@@ -33,6 +33,14 @@
 		
 		$.post("server.jsp",{login: username, password: password}, function(data){
 		console.log(data);
+
+		if (data.trim() != "Wrong login") {
+			$("#loginbox").fadeOut();
+			$("#container").html(data);
+		}else{
+			alert(data);
+		}
+
 	});	
 		
 	});

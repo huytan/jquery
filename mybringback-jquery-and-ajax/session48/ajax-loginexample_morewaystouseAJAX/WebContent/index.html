@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX Overview</title>
+		<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+
+		<style type="text/css">
+		#loginbox{
+			width: 240px;
+			height: 140px;
+			margin: 0px auto;
+			margin-top: 300px
+		}
+		</style>
+</head>
+<body>
+
+<div id="loginbox">
+<input id="username" type="text" placeholder="your username"/>
+<br>
+<input id="password" type="text" placeholder="your password"/>
+<br>
+<button>Sign in</button>
+</div>
+<br>
+
+<div id="container"></div>
+
+<script type="text/javascript">
+	$("button").click(function(){
+		var username = $("#username").val();
+		var password = $("#password").val();
+		
+/*		$.post("server.jsp",{login: username, password: password}, function(data){
+			console.log(data);
+
+			if (data.trim() != "Wrong login") {
+				$("#loginbox").fadeOut();
+				$("#container").html(data);
+			}else{
+				alert(data);
+			}
+
+		});	*/
+
+		$.ajax({
+			type: 'POST',
+			url: 'server.jsp',
+			data: {
+				'login': username,
+				'password': password
+			},
+			success: function(data){
+				alert(data);
+			}
+		});
+		
+	});
+
+	/*$.ajax({
+    url: "ajaxJSP.jsp",
+    type: "POST",
+    data: {id : "11",name:"ews"},
+    dataType: "html",
+    success: function(data){
+      alert('success');
+      alert(data)
+    },
+    error:function(){
+      alert('error')
+    }
+	});
+	url : where request need to send server side
+
+	type : POST or GET
+
+	data : post request object which need to send on requested page can get by request.getParameter(“id”)=11
+
+	dataType : xml, json, script, or html
+
+	success : This function is called if request is executed successfully.
+
+	error : This function is called if request is not executed successfully.
+
+
+	*/
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<meta charset="ISO-8859-1">
+<title>Back to the Basics</title>
+</head>
+<body>
+<button id="btn">Button</button>
+
+<script type="text/javascript">
+var button = $("#btn");
+	/* $("button").mouseover(function(){
+		$(this).fadeOut(1000);
+	}); */
+	button.mouseover(function(){
+		$(this).fadeOut(1000);
+	});
+	
+	button.click(function(){
+		var label = $(this).html();
+		alert(label);
+	});
+	
+	/* $("#btn").click(function(){
+		var label = $(this).html();
+		alert(label);
+	}); */
+</script>
+</body>
+</html>
